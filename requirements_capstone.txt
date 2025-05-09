@@ -1,0 +1,15 @@
+streamlit
+langchain
+groq
+faiss-cpu
+pypdf
+wikipedia
+beautifulsoup4
+langchain-community
+tiktoken
+langchain-groq
+pandas
+numpy
+matplotlib
+scikit-learn
+sentence-transformers
