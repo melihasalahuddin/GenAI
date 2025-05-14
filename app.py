@@ -15,9 +15,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Page configuration
-st.set_page_config(page_title="HR Policy Assistant", layout="wide")
-st.title("RAG Application using Gemini Pro & FAISS")
-st.subheader("Ask questions about HR Policies")
+st.set_page_config(page_title="RAG-based Assistant", layout="wide")
+st.title("RAG Application using Gemini Pro")
+st.subheader("Ask questions about the uploaded document")
 
 # Initialize session state for chat history and vector store
 if "messages" not in st.session_state:
@@ -26,7 +26,7 @@ if "vectorstore" not in st.session_state:
     st.session_state.vectorstore = None
 
 # File uploader for PDF
-uploaded_file = st.file_uploader("Upload an HR policy PDF", type="pdf")
+uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
 
 # Process the uploaded file
 if uploaded_file is not None:
@@ -93,7 +93,7 @@ def create_chain(vectorstore):
     return rag_chain
 
 # Get user input
-query = st.chat_input("Ask me anything about the HR policies", disabled=st.session_state.vectorstore is None)
+query = st.chat_input("Ask me anything about the uploaded document", disabled=st.session_state.vectorstore is None)
 
 # Process the query
 if query and st.session_state.vectorstore is not None:
@@ -118,4 +118,6 @@ if query and st.session_state.vectorstore is not None:
 
 # Display a message if no document is uploaded
 if st.session_state.vectorstore is None:
-    st.info("Please upload an HR policy document to start asking questions.")
+    st.info("Please upload a pdf document to start asking questions.")
+
+
